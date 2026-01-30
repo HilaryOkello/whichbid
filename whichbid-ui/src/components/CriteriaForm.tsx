@@ -65,9 +65,9 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Priorities Section */}
       <div className="space-y-3">
-        <label className="block text-sm font-semibold text-white">
+        <label className="block text-sm font-semibold text-foreground">
           What matters most to you?
-          <span className="font-normal text-white/50 ml-1">(select in order of importance)</span>
+          <span className="font-normal text-muted-foreground ml-1">(select in order of importance)</span>
         </label>
         <div className="flex flex-wrap gap-2">
           {PRIORITY_OPTIONS.map((option) => {
@@ -82,10 +82,10 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
                 disabled={disabled}
                 className={`
                   relative px-4 py-2 text-sm font-medium transition-all duration-300 flex items-center space-x-2
-                  ${isSelected
-                    ? `${option.selectedColor} text-white shadow-glow-blue`
-                    : `${option.color} text-white/70 ${option.hoverColor} hover:text-white`
-                  }
+                   ${isSelected
+                     ? `${option.selectedColor} text-white shadow-glow-blue`
+                     : `${option.color} text-foreground/70 ${option.hoverColor} hover:text-foreground`
+                   }
                   ${option.value === "price" ? "border border-white/20" : ""}
                   disabled:opacity-50 disabled:cursor-not-allowed
                   transform hover:scale-105 active:scale-95
@@ -118,10 +118,10 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
 
       {/* Advanced Options */}
       {isExpanded && (
-        <div className="space-y-5 p-4 bg-white/5 border-2 border-blue-500 rounded-none animate-fade-in">
+        <div className="space-y-5 p-4 bg-card/50 border-2 border-blue-500 rounded-none animate-fade-in">
           {/* Must Include */}
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-white">
+            <label className="block text-sm font-medium text-foreground">
               Required items (must be included)
             </label>
             <div className="flex flex-wrap gap-2">
@@ -135,10 +135,10 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
                     disabled={disabled}
                     className={`
                       px-3 py-1.5 text-sm font-medium rounded-none transition-all duration-300 border
-                      ${isSelected
-                        ? "bg-yellow-500 text-white border-yellow-500"
-                        : "bg-transparent text-white/70 border-white/20 hover:border-yellow-500 hover:text-white"
-                      }
+                       ${isSelected
+                         ? "bg-yellow-500 text-white border-yellow-500"
+                         : "bg-transparent text-foreground/70 border-border hover:border-yellow-500 hover:text-foreground"
+                       }
                       disabled:opacity-50 disabled:cursor-not-allowed
                       transform hover:scale-105 active:scale-95
                     `}
@@ -152,11 +152,11 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
 
           {/* Budget */}
           <div className="space-y-2">
-            <label htmlFor="budget" className="block text-sm font-medium text-white">
+            <label htmlFor="budget" className="block text-sm font-medium text-foreground">
               Maximum budget
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-white/50">$</span>
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
               <input
                 type="number"
                 id="budget"
@@ -164,14 +164,14 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
                 onChange={(e) => setBudget(e.target.value)}
                 disabled={disabled}
                 placeholder="e.g. 50000"
-                className="w-full pl-8 pr-4 py-2.5 bg-white/5 border border-white/10 rounded-none text-white placeholder-white/40 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full pl-8 pr-4 py-2.5 bg-card border border-border rounded-none text-foreground placeholder-muted-foreground focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
           </div>
 
           {/* Notes */}
           <div className="space-y-2">
-            <label htmlFor="notes" className="block text-sm font-medium text-white">
+            <label htmlFor="notes" className="block text-sm font-medium text-foreground">
               Additional context
             </label>
             <textarea
@@ -181,7 +181,7 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
               disabled={disabled}
               placeholder="e.g. We need this done before March, prefer local vendors..."
               rows={3}
-              className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-none text-white placeholder-white/40 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full px-4 py-2.5 bg-card border border-border rounded-none text-foreground placeholder-muted-foreground focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/20 transition-all duration-200 resize-none disabled:opacity-50 disabled:cursor-not-allowed"
             />
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
           w-full py-4 px-6 font-semibold text-lg rounded-none transition-all duration-300
           flex items-center justify-center space-x-2 btn-glow
           ${fileCount < 1
-            ? "bg-blue-500/30 text-white/60 cursor-not-allowed"
+            ? "bg-blue-500/30 text-foreground/60 cursor-not-allowed"
             : disabled
             ? "bg-blue-500/70 text-white cursor-wait"
             : "bg-blue-500 text-white hover:bg-yellow-500 transform hover:scale-[1.02] active:scale-[0.98]"
@@ -216,7 +216,7 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
       </button>
 
       {fileCount < 1 && (
-        <p className="text-center text-sm text-white">
+        <p className="text-center text-sm text-foreground">
           Upload at least one PDF quote to begin analysis
         </p>
       )}
