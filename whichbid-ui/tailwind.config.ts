@@ -9,41 +9,91 @@ export default {
   theme: {
     extend: {
       colors: {
-        // WhichBid color palette
-        brand: {
+        // FlutterCon-inspired color palette
+        dark: {
+          DEFAULT: "#0a0f1c",
+          50: "#1a1f2e",
+          100: "#141928",
+          200: "#0f1420",
+          300: "#0a0f1c",
+          400: "#070b14",
+          500: "#05080f",
+        },
+        flutter: {
+          cyan: {
+            DEFAULT: "#00D4FF",
+            light: "#5ce1ff",
+            dark: "#00a8cc",
+            glow: "rgba(0, 212, 255, 0.4)",
+          },
           purple: {
-            DEFAULT: "#4D148C",
-            light: "#6B21A8",
-            dark: "#3B0F6B",
-            50: "#F3E8FF",
-            100: "#E9D5FF",
-            200: "#D8B4FE",
+            DEFAULT: "#6366F1",
+            light: "#818cf8",
+            dark: "#4f46e5",
+            glow: "rgba(99, 102, 241, 0.4)",
           },
-          orange: {
-            DEFAULT: "#FF6200",
-            light: "#FF8533",
-            dark: "#CC4E00",
-            50: "#FFF7ED",
-            100: "#FFEDD5",
+          green: {
+            DEFAULT: "#10B981",
+            light: "#34d399",
+            dark: "#059669",
+            glow: "rgba(16, 185, 129, 0.4)",
           },
-          gray: {
-            50: "#F9FAFB",
-            100: "#F3F4F6",
-            200: "#E5E7EB",
-            300: "#D1D5DB",
-            400: "#9CA3AF",
-            500: "#6B7280",
-            600: "#4B5563",
-            700: "#374151",
-            800: "#1F2937",
-            900: "#111827",
-          },
+        },
+        glass: {
+          light: "rgba(255, 255, 255, 0.05)",
+          medium: "rgba(255, 255, 255, 0.1)",
+          heavy: "rgba(255, 255, 255, 0.15)",
+          border: "rgba(255, 255, 255, 0.1)",
         },
       },
       animation: {
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "bounce-slow": "bounce 2s infinite",
         "spin-slow": "spin 2s linear infinite",
+        "glow": "glow 2s ease-in-out infinite alternate",
+        "float": "float 3s ease-in-out infinite",
+        "gradient": "gradient 8s ease infinite",
+        "shimmer": "shimmer 2s linear infinite",
+        "scale-in": "scaleIn 0.2s ease-out",
+        "slide-up": "slideUp 0.3s ease-out",
+        "slide-down": "slideDown 0.3s ease-out",
+      },
+      keyframes: {
+        glow: {
+          "0%": { boxShadow: "0 0 5px rgba(0, 212, 255, 0.3), 0 0 10px rgba(0, 212, 255, 0.2)" },
+          "100%": { boxShadow: "0 0 20px rgba(0, 212, 255, 0.5), 0 0 30px rgba(0, 212, 255, 0.3)" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        gradient: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
+        scaleIn: {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(10px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        slideDown: {
+          "0%": { transform: "translateY(-10px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+      },
+      boxShadow: {
+        "glow-blue": "0 0 20px rgba(2, 125, 253, 0.3), 0 0 40px rgba(2, 125, 253, 0.1)",
+        "glow-cyan": "0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1)",
+        "glow-purple": "0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1)",
+        "glow-orange": "0 0 20px rgba(255, 107, 53, 0.3), 0 0 40px rgba(255, 107, 53, 0.1)",
+        "inner-glow": "inset 0 1px 0 0 rgba(255, 255, 255, 0.05)",
       },
     },
   },
