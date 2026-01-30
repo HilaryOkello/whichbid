@@ -19,13 +19,13 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
             <Lightbulb className="w-6 h-6 text-white" />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-bold mb-2 text-white">AI Recommendation</h3>
-            <p className="text-white/80 leading-relaxed">{recommendation}</p>
+            <h3 className="text-lg font-bold mb-2 text-foreground">AI Recommendation</h3>
+            <p className="text-muted-foreground leading-relaxed">{recommendation}</p>
             <div className="mt-4 flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-white/50">Confidence:</span>
+                <span className="text-sm text-muted-foreground">Confidence:</span>
                 <div className="flex items-center space-x-2">
-                  <div className="w-24 h-2 bg-white/10 overflow-hidden">
+                  <div className="w-24 h-2 bg-card overflow-hidden">
                     <div
                       className="h-full bg-blue-500 transition-all duration-500"
                       style={{ width: `${confidence * 100}%` }}
@@ -51,13 +51,13 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
           <table className="w-full">
             <thead className="bg-white/5">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-white/50 uppercase tracking-wider">Rank</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-white/50 uppercase tracking-wider">Vendor</th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-white/50 uppercase tracking-wider">Base Price</th>
-                <th className="px-6 py-3 text-right text-xs font-semibold text-white/50 uppercase tracking-wider">True Total</th>
-                <th className="px-6 py-3 text-center text-xs font-semibold text-white/50 uppercase tracking-wider">Score</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-white/50 uppercase tracking-wider">Pros</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-white/50 uppercase tracking-wider">Cons</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Rank</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Vendor</th>
+                <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider">Base Price</th>
+                <th className="px-6 py-3 text-right text-xs font-semibold text-muted-foreground uppercase tracking-wider">True Total</th>
+                <th className="px-6 py-3 text-center text-xs font-semibold text-muted-foreground uppercase tracking-wider">Score</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Pros</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wider">Cons</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/10">
@@ -72,23 +72,23 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
                         index === 0
                           ? "bg-yellow-500 text-white"
                           : index === 1
-                          ? "bg-white/30 text-white"
-                          : index === 2
-                          ? "bg-yellow-500 text-white"
-                          : "bg-white/10 text-white/60"
+                           ? "bg-card/30 text-foreground"
+                           : index === 2
+                           ? "bg-yellow-500 text-white"
+                           : "bg-card/10 text-muted-foreground"
                       }`}
                     >
                       {index + 1}
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="font-semibold text-white">{quote.vendor}</div>
+                    <div className="font-semibold text-foreground">{quote.vendor}</div>
                   </td>
                   <td className="px-6 py-4 text-right whitespace-nowrap">
-                    <span className="text-white/70">${quote.base_price.toLocaleString()}</span>
+                    <span className="text-muted-foreground">${quote.base_price.toLocaleString()}</span>
                   </td>
                   <td className="px-6 py-4 text-right whitespace-nowrap">
-                    <span className="font-semibold text-white">${quote.true_total.toLocaleString()}</span>
+                    <span className="font-semibold text-foreground">${quote.true_total.toLocaleString()}</span>
                     {quote.true_total > quote.base_price && (
                       <span className="block text-xs text-red-400">
                         +${(quote.true_total - quote.base_price).toLocaleString()} hidden
@@ -156,11 +156,11 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-white">{cost.vendor}</span>
+                      <span className="font-semibold text-foreground">{cost.vendor}</span>
                       <span className="font-bold text-yellow-500">${cost.estimated_amount.toLocaleString()}</span>
                     </div>
-                    <p className="text-sm text-white/70 mt-1">{cost.item}</p>
-                    <p className="text-xs text-white/50 mt-1">{cost.reason}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{cost.item}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{cost.reason}</p>
                   </div>
                 </div>
               ))}
@@ -171,18 +171,18 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
 
       {/* Reasoning */}
       <div className="glass rounded-none overflow-hidden border-2 border-blue-500">
-        <div className="px-6 py-4 border-b-2 border-blue-500 bg-white/5">
-          <h3 className="font-semibold text-white flex items-center space-x-2">
+        <div className="px-6 py-4 border-b-2 border-blue-500 bg-card/50">
+          <h3 className="font-semibold text-foreground flex items-center space-x-2">
             <FileText className="w-5 h-5 text-blue-500" />
             <span>Analysis Reasoning</span>
           </h3>
         </div>
         <div className="p-6">
-          <p className="text-white/80 leading-relaxed whitespace-pre-line">{reasoning}</p>
+          <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{reasoning}</p>
 
           {/* Criteria Used */}
           <div className="mt-4 pt-4 border-t-2 border-yellow-500">
-            <p className="text-sm text-white/50 mb-2">Criteria used for scoring:</p>
+            <p className="text-sm text-muted-foreground mb-2">Criteria used for scoring:</p>
             <div className="flex flex-wrap gap-2">
               {criteria_used.priorities.map((priority, i) => (
                 <span
@@ -205,17 +205,17 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
       {/* Caveats */}
       {caveats.length > 0 && (
         <div className="glass rounded-none overflow-hidden">
-          <div className="px-6 py-4 border-b border-white/10 bg-white/5">
-            <h3 className="font-semibold text-white flex items-center space-x-2">
-              <Info className="w-5 h-5 text-white/50" />
+          <div className="px-6 py-4 border-b border-border bg-card/50">
+          <h3 className="font-semibold text-foreground flex items-center space-x-2">
+              <Info className="w-5 h-5 text-muted-foreground" />
               <span>Important Caveats</span>
             </h3>
           </div>
           <div className="p-6">
             <ul className="space-y-2">
               {caveats.map((caveat, index) => (
-                <li key={index} className="flex items-start space-x-2 text-sm text-white/70">
-                  <span className="text-white/40 mt-0.5">•</span>
+                <li key={index} className="flex items-start space-x-2 text-sm text-muted-foreground">
+                  <span className="text-muted-foreground mt-0.5">•</span>
                   <span>{caveat}</span>
                 </li>
               ))}
