@@ -65,8 +65,8 @@ export default function FileUpload({ files, onFilesChange, disabled }: FileUploa
         onDrop={handleDrop}
         className={`
           relative border-2 border-dashed rounded-none p-8 text-center transition-all duration-300
-          ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-blue-500 hover:bg-white/5"}
-          ${isDragging ? "border-blue-500 bg-blue-500/10" : "border-white/20 bg-white/5"}
+          ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-blue-500 hover:bg-card/50"}
+          ${isDragging ? "border-blue-500 bg-blue-500/10" : "border-border bg-card/50"}
         `}
       >
         <input
@@ -85,10 +85,10 @@ export default function FileUpload({ files, onFilesChange, disabled }: FileUploa
           </div>
 
           <div>
-            <p className="text-lg font-semibold text-white">
+            <p className="text-lg font-semibold text-foreground">
               {isDragging ? "Drop your PDFs here" : "Drag & drop quote PDFs"}
             </p>
-            <p className="text-sm text-white/50 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               or click to browse • PDF files only
             </p>
           </div>
@@ -98,14 +98,14 @@ export default function FileUpload({ files, onFilesChange, disabled }: FileUploa
       {/* File List */}
       {files.length > 0 && (
         <div className="space-y-2">
-          <p className="text-sm font-medium text-white">
+          <p className="text-sm font-medium text-foreground">
             {files.length} file{files.length !== 1 ? "s" : ""} selected
           </p>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {files.map((file, index) => (
               <div
                 key={`${file.name}-${index}`}
-                className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-none transition-all duration-200 hover:bg-white/10 group"
+                className="flex items-center justify-between p-3 bg-card border border-border rounded-none transition-all duration-200 hover:bg-card/80 group"
               >
                 <div className="flex items-center space-x-3">
                   {/* PDF Icon */}
@@ -113,10 +113,10 @@ export default function FileUpload({ files, onFilesChange, disabled }: FileUploa
                     <FileText className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-white truncate max-w-xs">
+                    <p className="text-sm font-medium text-foreground truncate max-w-xs">
                       {file.name}
                     </p>
-                    <p className="text-xs text-white/50">
+                    <p className="text-xs text-muted-foreground">
                       {(file.size / 1024).toFixed(1)} KB
                     </p>
                   </div>
@@ -125,7 +125,7 @@ export default function FileUpload({ files, onFilesChange, disabled }: FileUploa
                 {!disabled && (
                   <button
                     onClick={() => removeFile(index)}
-                    className="p-1.5 text-white/40 hover:text-red-400 hover:bg-red-500/20 rounded-none transition-all duration-200"
+                    className="p-1.5 text-muted-foreground hover:text-red-400 hover:bg-red-500/20 rounded-none transition-all duration-200"
                     title="Remove file"
                   >
                     <X className="w-5 h-5" />
