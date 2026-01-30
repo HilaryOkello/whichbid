@@ -7,10 +7,12 @@ import {
   ProcessingIndicator,
   ResultsDisplay,
   DownloadButton,
+  ThemeToggle,
 } from "@/components";
 import { analyzeQuotes } from "@/lib/api";
 import { ComparisonCriteria, ProcessState, QuoteAnalysis } from "@/types";
-import { Calculator, RefreshCw, ClipboardCheck, AlertTriangle, Lightbulb, Zap, Search, Shield } from "lucide-react";
+import { RefreshCw, ClipboardCheck, AlertTriangle, Lightbulb, Zap, Search, Shield } from "lucide-react";
+import Logo from "@/components/Logo";
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
@@ -41,7 +43,11 @@ export default function Home() {
 
         clearInterval(progressInterval);
         setProcessState("complete");
-        setAnalysis(result);
+        
+        // Show completion state briefly before showing results
+        setTimeout(() => {
+          setAnalysis(result);
+        }, 1500);
       } catch (err) {
         setProcessState("error");
         setError(err instanceof Error ? err.message : "An unexpected error occurred");
@@ -60,44 +66,42 @@ export default function Home() {
   const isProcessing = ["uploading", "extracting", "parsing", "analyzing"].includes(processState);
 
   return (
-    <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
+      <header className="bg-card/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-flutter-blue flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-glow-blue">
-                <Calculator className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-105 rounded-full bg-white shadow-lg">
+                <Logo className="w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">
-                  <span className="text-blue-500">Q</span>
-                  <span className="text-blue-500">u</span>
-                  <span className="text-blue-500">o</span>
-                  <span className="text-blue-500">t</span>
-                  <span className="text-yellow-500">M</span>
-                  <span className="text-yellow-500">a</span>
-                  <span className="text-yellow-500">t</span>
+                <h1 className="text-xl font-bold text-foreground">
+                  <span className="text-blue-500">W</span>
+                  <span className="text-yellow-500">h</span>
+                  <span className="text-yellow-500">i</span>
                   <span className="text-yellow-500">c</span>
                   <span className="text-yellow-500">h</span>
-                  <span className="text-yellow-500">e</span>
-                  <span className="text-yellow-500">r</span>
+                  <span className="text-blue-500">B</span>
+                  <span className="text-yellow-500">i</span>
+                  <span className="text-yellow-500">d</span>
                 </h1>
-                <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
+                <p className="text-xs text-foreground hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
               </div>
             </div>
 
-            {analysis && (
-              <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              {analysis && (
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
+                  className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground hover:bg-card transition-all duration-300 flex items-center space-x-2"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span>New Analysis</span>
                 </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -110,7 +114,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-500 uppercase tracking-tight">
                 Compare Quotes <span className="text-flutter-cyan">Intelligently</span>
               </h2>
-              <p className="text-lg text-white max-w-2xl mx-auto hover:text-yellow-600 transition-colors duration-300 cursor-default">
+              <p className="text-lg text-foreground max-w-2xl mx-auto hover:text-yellow-600 transition-colors duration-300 cursor-default">
                 Upload your vendor quotes and let our AI analyze, compare, and recommend the best option
                 for your needs. Detect hidden costs and make informed decisions.
               </p>
@@ -119,7 +123,7 @@ export default function Home() {
             {/* Main Card */}
             <div className="glass overflow-hidden animate-fade-in-up">
               {/* Steps Indicator */}
-              <div className="bg-white/5 border-b border-white/10 px-6 py-4">
+              <div className="bg-card/50 border-b border-border px-6 py-4">
                 <div className="flex items-center justify-center space-x-4 sm:space-x-8">
                   <div className="flex items-center space-x-2 group">
                     <div
@@ -131,7 +135,7 @@ export default function Home() {
                     >
                       {files.length > 0 ? "✓" : "1"}
                     </div>
-                    <span className="text-sm font-medium text-white hidden sm:inline">Upload Quotes</span>
+                    <span className="text-sm font-medium text-foreground hidden sm:inline">Upload Quotes</span>
                   </div>
                   <div className="w-8 sm:w-16 h-1 bg-yellow-500 hover:bg-blue-500 transition-colors duration-300" />
                   <div className="flex items-center space-x-2 group">
@@ -142,14 +146,14 @@ export default function Home() {
                     >
                       2
                     </div>
-                    <span className="text-sm font-medium text-white hidden sm:inline">Set Priorities</span>
+                     <span className="text-sm font-medium text-foreground hidden sm:inline">Set Priorities</span>
                   </div>
                   <div className="w-8 sm:w-16 h-1 bg-blue-500 hover:bg-yellow-500 transition-colors duration-300" />
                   <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 flex items-center justify-center text-sm font-bold bg-blue-500 text-white hover:bg-yellow-500 transition-all duration-300">
                       3
                     </div>
-                    <span className="text-sm font-medium text-white hidden sm:inline">Get Results</span>
+                     <span className="text-sm font-medium text-foreground hidden sm:inline">Get Results</span>
                   </div>
                 </div>
               </div>
@@ -157,8 +161,8 @@ export default function Home() {
               <div className="p-6 sm:p-8 space-y-8">
                 {/* File Upload */}
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
-                    <span className="w-6 h-6 bg-flutter-blue text-white flex items-center justify-center text-sm">
+                  <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center space-x-2">
+                    <span className="w-6 h-6 bg-blue-500 text-white flex items-center justify-center text-sm">
                       1
                     </span>
                     <span>Upload Your Quotes</span>
@@ -171,8 +175,8 @@ export default function Home() {
 
                 {/* Criteria Form */}
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center space-x-2">
-                    <span className="w-6 h-6 bg-flutter-blue text-white flex items-center justify-center text-sm">
+                  <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center space-x-2">
+                    <span className="w-6 h-6 bg-blue-500 text-white flex items-center justify-center text-sm">
                       2
                     </span>
                     <span>Configure Analysis</span>
@@ -183,7 +187,7 @@ export default function Home() {
             </div>
 
             {/* Processing Indicator */}
-            {(isProcessing || processState === "error") && (
+            {(isProcessing || processState === "error" || processState === "complete") && (
               <ProcessingIndicator state={processState} error={error} />
             )}
 
@@ -225,6 +229,9 @@ export default function Home() {
               </div>
             )}
           </div>
+        ) : processState === "complete" && !analysis ? (
+          /* Show completion state */
+          <ProcessingIndicator state={processState} error={error} />
         ) : (
           /* Results Section */
           <div className="space-y-6 animate-fade-in">
@@ -236,7 +243,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-semibold text-blue-500">Analysis Complete</p>
-                  <p className="text-sm text-white/60">
+                  <p className="text-sm text-muted-foreground">
                     Analyzed {analysis.quotes.length} quotes • Found {analysis.hidden_costs.length} hidden costs
                   </p>
                 </div>
@@ -251,7 +258,7 @@ export default function Home() {
             <div className="text-center pt-8">
               <button
                 onClick={handleReset}
-                className="px-8 py-3 bg-white/10 text-white font-semibold hover:bg-white/20 transition-all duration-300 border border-white/10 hover:border-white/20"
+                className="px-8 py-3 bg-card text-foreground font-semibold hover:bg-card/80 transition-all duration-300 border border-border hover:border-border/80"
               >
                 Analyze New Quotes
               </button>
@@ -261,14 +268,14 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t-2 border-blue-500/50 bg-dark/90 backdrop-blur-sm mt-16">
+      <footer className="border-t-2 border-blue-500/50 bg-card/90 backdrop-blur-sm mt-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
-              <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">Powered by</p>
-              <span className="font-semibold bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">QuoteMatcher AI</span>
+              <p className="text-xs text-foreground hover:text-blue-500 transition-colors duration-300 cursor-default">Powered by</p>
+              <span className="font-semibold bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">WhichBid AI</span>
             </div>
-            <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">
+            <p className="text-xs text-foreground hover:text-blue-500 transition-colors duration-300 cursor-default">
               Making procurement decisions smarter, one quote at a time.
             </p>
           </div>
