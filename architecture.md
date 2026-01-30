@@ -1,4 +1,4 @@
-# QuoteMatcher Architecture Plan
+# WhichBid Architecture Plan
 
 ## Overview
 
@@ -9,7 +9,7 @@ A fixed pipeline (no agent routing) that extracts, parses, compares, and scores 
 ## Project Structure
 
 ```
-quotematcher/
+whichbid/
 ├── main.py                  # FastAPI app entrypoint
 ├── cli.py                   # Typer CLI entrypoint
 ├── core/
@@ -238,17 +238,17 @@ python-dotenv
 
 ## Files to Create
 
-1. `quotematcher/core/models.py` — Pydantic models
-2. `quotematcher/core/llm.py` — OpenRouter client
-3. `quotematcher/core/extractor.py` — PDF text extraction
-4. `quotematcher/core/parser.py` — LLM-based quote parsing
-5. `quotematcher/core/analyzer.py` — LLM-based comparison & scoring
-6. `quotematcher/core/pipeline.py` — Pipeline orchestrator
-7. `quotematcher/api/routes.py` — FastAPI routes
-8. `quotematcher/main.py` — FastAPI app
-9. `quotematcher/cli.py` — Typer CLI
-10. `quotematcher/requirements.txt`
-11. `quotematcher/.env.example`
+1. `whichbid/core/models.py` — Pydantic models
+2. `whichbid/core/llm.py` — OpenRouter client
+3. `whichbid/core/extractor.py` — PDF text extraction
+4. `whichbid/core/parser.py` — LLM-based quote parsing
+5. `whichbid/core/analyzer.py` — LLM-based comparison & scoring
+6. `whichbid/core/pipeline.py` — Pipeline orchestrator
+7. `whichbid/api/routes.py` — FastAPI routes
+8. `whichbid/main.py` — FastAPI app
+9. `whichbid/cli.py` — Typer CLI
+10. `whichbid/requirements.txt`
+11. `whichbid/.env.example`
 
 ---
 
