@@ -32,10 +32,10 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
           </div>
         )}
         <div>
-          <h3 className="font-semibold text-white">
+          <h3 className="font-semibold text-foreground">
             {state === "error" ? "Analysis Failed" : state === "complete" ? "Analysis Complete" : "AI Processing"}
           </h3>
-          <p className="text-sm text-white/60">
+          <p className="text-sm text-muted-foreground">
             {state === "error" ? error : currentStep?.description}
           </p>
         </div>
@@ -55,9 +55,9 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
                 <div
                   className={`
                     w-8 h-8 rounded-none flex items-center justify-center text-sm font-medium transition-all duration-300
-                    ${isComplete ? "bg-blue-500 text-white" : ""}
-                    ${isCurrent ? "bg-blue-500 text-white animate-pulse" : ""}
-                    ${isPending ? "bg-white/10 text-white/40" : ""}
+                    ${isComplete ? "progress-step-complete" : ""}
+                    ${isCurrent ? "progress-step-current" : ""}
+                    ${isPending ? "progress-step-pending" : ""}
                   `}
                 >
                   {isComplete ? (
@@ -71,7 +71,7 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
                 <div className="flex-1">
                   <p
                     className={`text-sm font-medium transition-colors duration-200 ${
-                      isComplete || isCurrent ? "text-white" : "text-white/40"
+                       isComplete || isCurrent ? "text-white" : "text-muted-foreground"
                     }`}
                   >
                     {step.label}
@@ -80,12 +80,12 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
 
                 {/* Status */}
                 {isCurrent && (
-                  <span className="text-xs text-blue-500 font-medium px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded-none">
+                  <span className="text-xs font-medium px-2 py-1 progress-badge rounded-none">
                     In Progress
                   </span>
                 )}
                 {isComplete && (
-                  <span className="text-xs text-blue-500 font-medium px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded-none">
+                  <span className="text-xs font-medium px-2 py-1 progress-badge rounded-none">
                     Done
                   </span>
                 )}
@@ -98,7 +98,7 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
       {/* Progress Bar */}
       {state !== "error" && state !== "complete" && (
         <div className="space-y-2">
-          <div className="h-2 bg-white/10 rounded-none overflow-hidden">
+          <div className="h-2 bg-card rounded-none overflow-hidden">
             <div
               className="h-full bg-blue-500 rounded-none transition-all duration-500 ease-out progress-bar"
               style={{
@@ -106,7 +106,7 @@ export default function ProcessingIndicator({ state, error }: ProcessingIndicato
               }}
             />
           </div>
-          <p className="text-xs text-white/50 text-right">
+          <p className="text-xs text-muted-foreground text-right">
             Step {currentStepIndex + 1} of {PROCESS_STEPS.length}
           </p>
         </div>
