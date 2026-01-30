@@ -16,7 +16,7 @@ from core.pipeline import run
 load_dotenv()
 
 app = typer.Typer(
-    name="quotematcher",
+    name="whichbid",
     help="Compare and analyze vendor quotes with AI-powered insights",
     no_args_is_help=True,
     add_completion=False,
@@ -26,7 +26,7 @@ console = Console()
 
 @app.callback(invoke_without_command=True)
 def main(ctx: typer.Context) -> None:
-    """QuoteMatcher - Compare and analyze vendor quotes with AI."""
+    """WhichBid - Compare and analyze vendor quotes with AI."""
     if ctx.invoked_subcommand is None:
         console.print(ctx.get_help())
 
