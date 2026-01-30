@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WhichBid - AI-Powered Quote Comparison",
+  title: "QuoteMatcher - AI-Powered Quote Comparison",
   description: "Compare and analyze vendor quotes with AI-powered insights. Get recommendations, detect hidden costs, and make better procurement decisions.",
 };
 
@@ -13,7 +13,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased min-h-screen bg-brand-gray-50">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="antialiased min-h-screen bg-white">
         {children}
       </body>
     </html>
