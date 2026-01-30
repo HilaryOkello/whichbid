@@ -9,6 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Theme-aware colors using CSS variables
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        muted: "var(--muted)",
+        border: "var(--border)",
+        card: "var(--card)",
         // FlutterCon-inspired color palette
         dark: {
           DEFAULT: "#0a0f1c",
@@ -18,6 +24,15 @@ export default {
           300: "#0a0f1c",
           400: "#070b14",
           500: "#05080f",
+        },
+        light: {
+          DEFAULT: "#ffffff",
+          50: "#f8fafc",
+          100: "#f1f5f9",
+          200: "#e2e8f0",
+          300: "#cbd5e1",
+          400: "#94a3b8",
+          500: "#64748b",
         },
         flutter: {
           cyan: {
