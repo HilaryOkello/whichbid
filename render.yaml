@@ -1,0 +1,31 @@
+# Render Blueprint - https://render.com/docs/blueprint-spec
+# Deploy: Connect your GitHub repo to Render, it will auto-detect this file
+
+services:
+  # Backend API Service
+  - type: web
+    name: whichbid-api
+    runtime: docker
+    dockerfilePath: ./whichbid/Dockerfile
+    dockerContext: ./whichbid
+    healthCheckPath: /health
+    plan: free  # Change to 'starter' for production
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false  # Will prompt during deploy
+      - key: MODEL
+        value: anthropic/claude-sonnet-4
+      - key: ALLOWED_ORIGINS
+        value: https://whichbid-ui.onrender.com  # Update after first deploy if name differs
+
+  # Frontend Web Service
+  - type: web
+    name: whichbid-ui
+    runtime: docker
+    dockerfilePath: ./whichbid-ui/Dockerfile
+    dockerContext: ./whichbid-ui
+    plan: free  # Change to 'starter' for production
+    healthCheckPath: /api/health
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://whichbid-api.onrender.com  # Update after first deploy if name differs
