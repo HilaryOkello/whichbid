@@ -11,6 +11,7 @@ import {
   SavingsDashboard,
   AnalysisHistory,
   saveToHistory,
+  ShareButton,
 } from "@/components";
 import { analyzeQuotes } from "@/lib/api";
 import { ComparisonCriteria, ProcessState, QuoteAnalysis } from "@/types";
@@ -259,7 +260,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <DownloadButton analysis={analysis} />
+              <div className="flex items-center space-x-2">
+                <ShareButton analysis={analysis} />
+                <DownloadButton analysis={analysis} />
+              </div>
             </div>
 
             {/* Results Display */}

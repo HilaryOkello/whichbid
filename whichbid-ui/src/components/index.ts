@@ -6,3 +6,4 @@ export { default as DownloadButton } from "./DownloadButton";
 export { default as ThemeToggle } from "./ThemeToggle";
 export { default as SavingsDashboard } from "./SavingsDashboard";
 export { default as AnalysisHistory, saveToHistory } from "./AnalysisHistory";
+export { default as ShareButton } from "./ShareButton";
