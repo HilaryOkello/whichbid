@@ -66,21 +66,14 @@ export default function Home() {
       <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="WhichBid Logo"
-                width={40}
-                height={40}
-                className="transition-all duration-300 hover:scale-110"
+                width={200}
+                height={50}
+                className="transition-all duration-300 hover:scale-105"
               />
-              <div>
-                <h1 className="text-xl font-bold text-white">
-                  <span className="text-blue-500">Which</span>
-                  <span className="text-yellow-500">Bid</span>
-                </h1>
-                <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
-              </div>
             </div>
 
             {analysis && (
@@ -119,11 +112,10 @@ export default function Home() {
                 <div className="flex items-center justify-center space-x-4 sm:space-x-8">
                   <div className="flex items-center space-x-2 group">
                     <div
-                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        files.length > 0
-                          ? "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
-                          : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
-                      }`}
+                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${files.length > 0
+                        ? "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
+                        : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
+                        }`}
                     >
                       {files.length > 0 ? "✓" : "1"}
                     </div>
@@ -132,9 +124,8 @@ export default function Home() {
                   <div className="w-8 sm:w-16 h-1 bg-yellow-500 hover:bg-blue-500 transition-colors duration-300" />
                   <div className="flex items-center space-x-2 group">
                     <div
-                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        files.length > 0 ? "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white" : "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${files.length > 0 ? "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white" : "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white"
+                        }`}
                     >
                       2
                     </div>
