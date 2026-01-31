@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   FileUpload,
   CriteriaForm,
   ProcessingIndicator,
   ResultsDisplay,
   DownloadButton,
+  ThemeToggle,
+  SavingsDashboard,
+  AnalysisHistory,
+  saveToHistory,
 } from "@/components";
 import { analyzeQuotes } from "@/lib/api";
 import { ComparisonCriteria, ProcessState, QuoteAnalysis } from "@/types";
@@ -58,6 +62,20 @@ export default function Home() {
     setAnalysis(null);
   };
 
+  // Save analysis to history when complete
+  useEffect(() => {
+    if (analysis && processState === "complete") {
+      saveToHistory(analysis);
+    }
+  }, [analysis, processState]);
+
+  // Handler for loading from history
+  const handleLoadFromHistory = (loadedAnalysis: QuoteAnalysis) => {
+    setAnalysis(loadedAnalysis);
+    setProcessState("complete");
+    setError(null);
+  };
+
   const isProcessing = ["uploading", "extracting", "parsing", "analyzing"].includes(processState);
 
   return (
@@ -76,17 +94,27 @@ export default function Home() {
               />
             </div>
 
-            {analysis && (
-              <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              {/* Analysis History */}
+              <AnalysisHistory
+                currentAnalysis={analysis}
+                onLoadAnalysis={handleLoadFromHistory}
+              />
+
+              {/* Theme Toggle */}
+              <ThemeToggle />
+
+              {/* New Analysis button - shown when analysis exists */}
+              {analysis && (
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
+                  className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 rounded-lg"
                 >
                   <RefreshCw className="w-4 h-4" />
-                  <span>New Analysis</span>
+                  <span className="hidden sm:inline">New Analysis</span>
                 </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -215,6 +243,9 @@ export default function Home() {
         ) : (
           /* Results Section */
           <div className="space-y-6 animate-fade-in">
+            {/* Savings Dashboard with Key Metrics */}
+            <SavingsDashboard analysis={analysis} />
+
             {/* Success Banner */}
             <div className="glass border border-blue-500/30 p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
