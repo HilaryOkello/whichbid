@@ -66,21 +66,15 @@ export default function Home() {
       <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2">
               <Image
                 src="/logo.svg"
                 alt="WhichBid Logo"
-                width={40}
-                height={40}
-                className="transition-all duration-300 hover:scale-110"
+                width={180}
+                height={72}
+                className="transition-all duration-300 hover:scale-105"
               />
-              <div>
-                <h1 className="text-xl font-bold text-white">
-                  <span className="text-blue-500">Which</span>
-                  <span className="text-yellow-500">Bid</span>
-                </h1>
-                <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
-              </div>
+              <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
             </div>
 
             {analysis && (
