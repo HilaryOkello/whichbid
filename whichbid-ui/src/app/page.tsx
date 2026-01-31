@@ -266,7 +266,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
             <div className="flex items-center space-x-2">
               <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">Powered by</p>
-              <span className="font-semibold bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">QuoteMatcher AI</span>
+              <span className="font-semibold bg-gradient-to-r from-blue-500 to-yellow-500 bg-clip-text text-transparent">WhichBid AI</span>
             </div>
             <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">
               Making procurement decisions smarter, one quote at a time.
