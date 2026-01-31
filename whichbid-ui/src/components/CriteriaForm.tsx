@@ -11,12 +11,12 @@ interface CriteriaFormProps {
 }
 
 const PRIORITY_OPTIONS = [
-  { value: "price", label: "Price", icon: DollarSign, color: "bg-yellow-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-yellow-500" },
-  { value: "timeline", label: "Timeline", icon: Clock, color: "bg-blue-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-blue-500" },
-  { value: "warranty", label: "Warranty", icon: Shield, color: "bg-yellow-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-yellow-500" },
-  { value: "quality", label: "Quality", icon: Star, color: "bg-blue-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-blue-500" },
-  { value: "scope", label: "Scope", icon: FileText, color: "bg-yellow-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-yellow-500" },
-  { value: "risk", label: "Risk", icon: AlertTriangle, color: "bg-blue-500", hoverColor: "hover:bg-yellow-500", selectedColor: "bg-blue-500" },
+  { value: "price", label: "Price", icon: DollarSign, color: "bg-yellow-500", textColor: "text-gray-900", hoverColor: "hover:bg-yellow-400", selectedColor: "bg-yellow-500", selectedTextColor: "text-gray-900" },
+  { value: "timeline", label: "Timeline", icon: Clock, color: "bg-blue-500", textColor: "text-white", hoverColor: "hover:bg-yellow-500 hover:text-gray-900", selectedColor: "bg-blue-500", selectedTextColor: "text-white" },
+  { value: "warranty", label: "Warranty", icon: Shield, color: "bg-yellow-500", textColor: "text-gray-900", hoverColor: "hover:bg-yellow-400", selectedColor: "bg-yellow-500", selectedTextColor: "text-gray-900" },
+  { value: "quality", label: "Quality", icon: Star, color: "bg-blue-500", textColor: "text-white", hoverColor: "hover:bg-yellow-500 hover:text-gray-900", selectedColor: "bg-blue-500", selectedTextColor: "text-white" },
+  { value: "scope", label: "Scope", icon: FileText, color: "bg-yellow-500", textColor: "text-gray-900", hoverColor: "hover:bg-yellow-400", selectedColor: "bg-yellow-500", selectedTextColor: "text-gray-900" },
+  { value: "risk", label: "Risk", icon: AlertTriangle, color: "bg-blue-500", textColor: "text-white", hoverColor: "hover:bg-yellow-500 hover:text-gray-900", selectedColor: "bg-blue-500", selectedTextColor: "text-white" },
 ];
 
 const MUST_INCLUDE_OPTIONS = [
@@ -83,8 +83,8 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
                 className={`
                   relative px-4 py-2 text-sm font-medium transition-all duration-300 flex items-center space-x-2
                   ${isSelected
-                    ? `${option.selectedColor} text-white shadow-glow-blue`
-                    : `${option.color} text-white/70 ${option.hoverColor} hover:text-white`
+                    ? `${option.selectedColor} ${option.selectedTextColor} shadow-glow-blue`
+                    : `${option.color} ${option.textColor} ${option.hoverColor}`
                   }
                   ${option.value === "price" ? "border border-white/20" : ""}
                   disabled:opacity-50 disabled:cursor-not-allowed
@@ -93,8 +93,8 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
               >
                 <Icon className="w-4 h-4" />
                 <span>{option.label}</span>
-                {isSelected && order > 0 && option.value !== "timeline" && (
-                  <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-yellow-500 text-white text-xs rounded-none flex items-center justify-center font-bold">
+                {isSelected && order > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-yellow-500 text-gray-900 text-xs rounded-none flex items-center justify-center font-bold">
                     {order}
                   </span>
                 )}
@@ -136,7 +136,7 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
                     className={`
                       px-3 py-1.5 text-sm font-medium rounded-none transition-all duration-300 border
                       ${isSelected
-                        ? "bg-yellow-500 text-white border-yellow-500"
+                        ? "bg-yellow-500 text-gray-900 border-yellow-500"
                         : "bg-transparent text-white/70 border-white/20 hover:border-yellow-500 hover:text-white"
                       }
                       disabled:opacity-50 disabled:cursor-not-allowed
@@ -198,7 +198,7 @@ export default function CriteriaForm({ onSubmit, disabled, fileCount }: Criteria
             ? "bg-blue-500/30 text-white/60 cursor-not-allowed"
             : disabled
             ? "bg-blue-500/70 text-white cursor-wait"
-            : "bg-blue-500 text-white hover:bg-yellow-500 transform hover:scale-[1.02] active:scale-[0.98]"
+            : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900 transform hover:scale-[1.02] active:scale-[0.98]"
           }
         `}
       >
