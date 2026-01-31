@@ -10,7 +10,8 @@ import {
 } from "@/components";
 import { analyzeQuotes } from "@/lib/api";
 import { ComparisonCriteria, ProcessState, QuoteAnalysis } from "@/types";
-import { Calculator, RefreshCw, ClipboardCheck, AlertTriangle, Lightbulb, Zap, Search, Shield } from "lucide-react";
+import { RefreshCw, ClipboardCheck, AlertTriangle, Lightbulb, Search } from "lucide-react";
+import Image from "next/image";
 
 export default function Home() {
   const [files, setFiles] = useState<File[]>([]);
@@ -66,9 +67,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-flutter-blue flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-glow-blue">
-                <Calculator className="w-6 h-6 text-white" />
-              </div>
+              <Image
+                src="/logo.svg"
+                alt="WhichBid Logo"
+                width={40}
+                height={40}
+                className="transition-all duration-300 hover:scale-110"
+              />
               <div>
                 <h1 className="text-xl font-bold text-white">
                   <span className="text-blue-500">Which</span>
