@@ -82,14 +82,14 @@ export default function Home() {
     <div className="min-h-screen bg-dark">
       {/* Header */}
       <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center">
+            <div className="flex items-center -ml-2">
               <Image
                 src="/logo.png"
                 alt="WhichBid Logo"
-                width={360}
-                height={90}
+                width={300}
+                height={75}
                 className="transition-all duration-300 hover:scale-105"
               />
             </div>

@@ -11,13 +11,13 @@ export default {
       colors: {
         // FlutterCon-inspired color palette
         dark: {
-          DEFAULT: "#0a0f1c",
-          50: "#1a1f2e",
-          100: "#141928",
-          200: "#0f1420",
-          300: "#0a0f1c",
-          400: "#070b14",
-          500: "#05080f",
+          DEFAULT: "#0f172a",
+          50: "#1e293b",
+          100: "#1a2236",
+          200: "#151c2c",
+          300: "#0f172a",
+          400: "#0c1322",
+          500: "#090f1a",
         },
         flutter: {
           cyan: {
