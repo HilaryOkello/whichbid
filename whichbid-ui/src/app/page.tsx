@@ -1,12 +1,17 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   FileUpload,
   CriteriaForm,
   ProcessingIndicator,
   ResultsDisplay,
   DownloadButton,
+  ThemeToggle,
+  SavingsDashboard,
+  AnalysisHistory,
+  saveToHistory,
+  ShareButton,
 } from "@/components";
 import { analyzeQuotes } from "@/lib/api";
 import { ComparisonCriteria, ProcessState, QuoteAnalysis } from "@/types";
@@ -58,42 +63,59 @@ export default function Home() {
     setAnalysis(null);
   };
 
+  // Save analysis to history when complete
+  useEffect(() => {
+    if (analysis && processState === "complete") {
+      saveToHistory(analysis);
+    }
+  }, [analysis, processState]);
+
+  // Handler for loading from history
+  const handleLoadFromHistory = (loadedAnalysis: QuoteAnalysis) => {
+    setAnalysis(loadedAnalysis);
+    setProcessState("complete");
+    setError(null);
+  };
+
   const isProcessing = ["uploading", "extracting", "parsing", "analyzing"].includes(processState);
 
   return (
     <div className="min-h-screen bg-dark">
       {/* Header */}
-      <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-3">
+      <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center -ml-2">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="WhichBid Logo"
-                width={40}
-                height={40}
-                className="transition-all duration-300 hover:scale-110"
+                width={300}
+                height={75}
+                className="transition-all duration-300 hover:scale-105"
               />
-              <div>
-                <h1 className="text-xl font-bold text-white">
-                  <span className="text-blue-500">Which</span>
-                  <span className="text-yellow-500">Bid</span>
-                </h1>
-                <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
-              </div>
             </div>
 
-            {analysis && (
-              <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
+              {/* Analysis History - styled button */}
+              <AnalysisHistory
+                currentAnalysis={analysis}
+                onLoadAnalysis={handleLoadFromHistory}
+              />
+
+              {/* Theme Toggle */}
+              <ThemeToggle />
+
+              {/* New Analysis button - shown when analysis exists */}
+              {analysis && (
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-2"
+                  className="px-4 py-2 text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 flex items-center space-x-2 rounded-lg shadow-lg hover:shadow-blue-500/30"
                 >
                   <RefreshCw className="w-4 h-4" />
-                  <span>New Analysis</span>
+                  <span className="hidden sm:inline">New Analysis</span>
                 </button>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -119,11 +141,10 @@ export default function Home() {
                 <div className="flex items-center justify-center space-x-4 sm:space-x-8">
                   <div className="flex items-center space-x-2 group">
                     <div
-                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        files.length > 0
-                          ? "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
-                          : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
-                      }`}
+                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${files.length > 0
+                        ? "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
+                        : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
+                        }`}
                     >
                       {files.length > 0 ? "✓" : "1"}
                     </div>
@@ -132,9 +153,8 @@ export default function Home() {
                   <div className="w-8 sm:w-16 h-1 bg-yellow-500 hover:bg-blue-500 transition-colors duration-300" />
                   <div className="flex items-center space-x-2 group">
                     <div
-                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        files.length > 0 ? "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white" : "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${files.length > 0 ? "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white" : "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white"
+                        }`}
                     >
                       2
                     </div>
@@ -224,6 +244,9 @@ export default function Home() {
         ) : (
           /* Results Section */
           <div className="space-y-6 animate-fade-in">
+            {/* Savings Dashboard with Key Metrics */}
+            <SavingsDashboard analysis={analysis} />
+
             {/* Success Banner */}
             <div className="glass border border-blue-500/30 p-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -237,7 +260,10 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <DownloadButton analysis={analysis} />
+              <div className="flex items-center space-x-2">
+                <ShareButton analysis={analysis} />
+                <DownloadButton analysis={analysis} />
+              </div>
             </div>
 
             {/* Results Display */}

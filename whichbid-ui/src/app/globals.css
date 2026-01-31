@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0f1c;
+  --background: #0f172a;
   --foreground: #ffffff;
   --primary: #027DFD;
   --secondary: #6366F1;
@@ -23,7 +23,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #141928;
+  background: #1a2236;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -52,6 +52,7 @@ html {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -63,6 +64,7 @@ html {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -70,18 +72,24 @@ html {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(0, 212, 255, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), 0 0 30px rgba(0, 212, 255, 0.3);
   }
 }
 
 @keyframes icon-bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
@@ -154,11 +162,25 @@ html {
 }
 
 /* Stagger animation delays for list items */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
 
 /* Progress bar animation */
 .progress-bar {
@@ -181,24 +203,118 @@ html {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
 }
 
 /* Input styles for dark theme */
-input, textarea, select {
+input,
+textarea,
+select {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
   color: white;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: rgba(255, 255, 255, 0.4);
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
   background: rgba(255, 255, 255, 0.08);
   border-color: #00D4FF;
   box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* Light Mode Styles */
+.light-mode {
+  --background: #f8fafc;
+  --foreground: #1e293b;
+}
+
+.light-mode body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+.light-mode .bg-dark {
+  background: #f8fafc !important;
+}
+
+.light-mode .bg-dark\/90 {
+  background: rgba(248, 250, 252, 0.95) !important;
+}
+
+.light-mode .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .text-white {
+  color: #1e293b !important;
+}
+
+.light-mode .text-white\/60,
+.light-mode .text-white\/70,
+.light-mode .text-white\/80 {
+  color: rgba(30, 41, 59, 0.7) !important;
+}
+
+.light-mode .text-white\/40,
+.light-mode .text-white\/50 {
+  color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.light-mode .border-white\/10,
+.light-mode .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .bg-white\/5,
+.light-mode .bg-white\/10 {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-mode .hover\:bg-white\/10:hover,
+.light-mode .hover\:bg-white\/20:hover {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode input,
+.light-mode textarea,
+.light-mode select {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #1e293b;
+}
+
+.light-mode input::placeholder,
+.light-mode textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.light-mode ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+/* Counter animation for dashboard */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: countUp 0.5s ease-out forwards;
 }

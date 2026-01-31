@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "QuoteMatcher - AI-Powered Quote Comparison",
+  title: "WhichBid - AI-Powered Quote Comparison",
   description: "Compare and analyze vendor quotes with AI-powered insights. Get recommendations, detect hidden costs, and make better procurement decisions.",
 };
 
