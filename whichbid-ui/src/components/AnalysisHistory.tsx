@@ -93,11 +93,12 @@ export default function AnalysisHistory({ currentAnalysis, onLoadAnalysis }: Ana
         <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center space-x-2 px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 rounded-lg"
+                className="flex items-center space-x-2 px-3 py-2.5 text-sm text-white/80 hover:text-white bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/20 transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl"
+                title="View Recent Analyses"
             >
                 <History className="w-4 h-4" />
                 <span className="hidden sm:inline">History</span>
-                <span className="bg-blue-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                <span className="bg-blue-500 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">
                     {history.length}
                 </span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />

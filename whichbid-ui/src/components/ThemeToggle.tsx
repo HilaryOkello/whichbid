@@ -31,14 +31,14 @@ export default function ThemeToggle() {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-all duration-300 group"
+            className="p-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/20 transition-all duration-300 group shadow-lg hover:shadow-xl"
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+            title={isDark ? "Light Mode" : "Dark Mode"}
         >
             {isDark ? (
-                <Sun className="w-5 h-5 text-yellow-400 group-hover:rotate-12 transition-transform duration-300" />
+                <Sun className="w-5 h-5 text-yellow-400 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
             ) : (
-                <Moon className="w-5 h-5 text-blue-500 group-hover:-rotate-12 transition-transform duration-300" />
+                <Moon className="w-5 h-5 text-blue-500 group-hover:-rotate-12 group-hover:scale-110 transition-all duration-300" />
             )}
         </button>
     );

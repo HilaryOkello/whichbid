@@ -81,21 +81,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-dark">
       {/* Header */}
-      <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-blue-500/50">
+      <header className="bg-dark/90 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="WhichBid Logo"
-                width={200}
-                height={50}
+                width={360}
+                height={90}
                 className="transition-all duration-300 hover:scale-105"
               />
             </div>
 
-            <div className="flex items-center space-x-2 sm:space-x-4">
-              {/* Analysis History */}
+            <div className="flex items-center space-x-3">
+              {/* Analysis History - styled button */}
               <AnalysisHistory
                 currentAnalysis={analysis}
                 onLoadAnalysis={handleLoadFromHistory}
@@ -108,7 +108,7 @@ export default function Home() {
               {analysis && (
                 <button
                   onClick={handleReset}
-                  className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300 flex items-center space-x-2 rounded-lg"
+                  className="px-4 py-2 text-sm font-medium bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 flex items-center space-x-2 rounded-lg shadow-lg hover:shadow-blue-500/30"
                 >
                   <RefreshCw className="w-4 h-4" />
                   <span className="hidden sm:inline">New Analysis</span>
