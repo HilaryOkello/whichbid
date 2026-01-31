@@ -70,11 +70,11 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
                     <div
                       className={`w-8 h-8 flex items-center justify-center font-bold text-sm ${
                         index === 0
-                          ? "bg-yellow-500 text-white"
+                          ? "bg-yellow-500 text-gray-900"
                           : index === 1
                           ? "bg-white/30 text-white"
                           : index === 2
-                          ? "bg-yellow-500 text-white"
+                          ? "bg-yellow-500 text-gray-900"
                           : "bg-white/10 text-white/60"
                       }`}
                     >
@@ -152,7 +152,7 @@ export default function ResultsDisplay({ analysis }: ResultsDisplayProps) {
                   className="flex items-start space-x-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-none transition-all duration-200 hover:bg-yellow-500/15"
                 >
                   <div className="w-10 h-10 bg-yellow-500 rounded-none flex items-center justify-center flex-shrink-0">
-                    <DollarSign className="w-5 h-5 text-white" />
+                    <DollarSign className="w-5 h-5 text-gray-900" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between">

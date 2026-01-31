@@ -71,17 +71,8 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">
-                  <span className="text-blue-500">Q</span>
-                  <span className="text-blue-500">u</span>
-                  <span className="text-blue-500">o</span>
-                  <span className="text-blue-500">t</span>
-                  <span className="text-yellow-500">M</span>
-                  <span className="text-yellow-500">a</span>
-                  <span className="text-yellow-500">t</span>
-                  <span className="text-yellow-500">c</span>
-                  <span className="text-yellow-500">h</span>
-                  <span className="text-yellow-500">e</span>
-                  <span className="text-yellow-500">r</span>
+                  <span className="text-blue-500">Which</span>
+                  <span className="text-yellow-500">Bid</span>
                 </h1>
                 <p className="text-xs text-white hover:text-blue-500 transition-colors duration-300 cursor-default">AI-Powered Quote Comparison</p>
               </div>
@@ -125,8 +116,8 @@ export default function Home() {
                     <div
                       className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
                         files.length > 0
-                          ? "bg-blue-500 text-white hover:bg-yellow-500"
-                          : "bg-blue-500 text-white hover:bg-yellow-500"
+                          ? "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
+                          : "bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900"
                       }`}
                     >
                       {files.length > 0 ? "✓" : "1"}
@@ -137,7 +128,7 @@ export default function Home() {
                   <div className="flex items-center space-x-2 group">
                     <div
                       className={`w-8 h-8 flex items-center justify-center text-sm font-bold transition-all duration-300 ${
-                        files.length > 0 ? "bg-yellow-500 text-white hover:bg-blue-500" : "bg-yellow-500 text-white hover:bg-blue-500"
+                        files.length > 0 ? "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white" : "bg-yellow-500 text-gray-900 hover:bg-blue-500 hover:text-white"
                       }`}
                     >
                       2
@@ -146,7 +137,7 @@ export default function Home() {
                   </div>
                   <div className="w-8 sm:w-16 h-1 bg-blue-500 hover:bg-yellow-500 transition-colors duration-300" />
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 flex items-center justify-center text-sm font-bold bg-blue-500 text-white hover:bg-yellow-500 transition-all duration-300">
+                    <div className="w-8 h-8 flex items-center justify-center text-sm font-bold bg-blue-500 text-white hover:bg-yellow-500 hover:text-gray-900 transition-all duration-300">
                       3
                     </div>
                     <span className="text-sm font-medium text-white hidden sm:inline">Get Results</span>
@@ -193,7 +184,7 @@ export default function Home() {
                 {/* Blue Card - Smart Comparison */}
                 <div className="bg-blue-500 p-6 text-center card-hover group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]">
                   <div className="w-14 h-14 bg-yellow-500 mx-auto flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-400">
-                    <Search className="w-7 h-7 text-white" />
+                    <Search className="w-7 h-7 text-gray-900" />
                   </div>
                   <h3 className="font-semibold text-white mb-2">Smart Comparison</h3>
                   <p className="text-sm text-white/80">
@@ -206,8 +197,8 @@ export default function Home() {
                   <div className="w-14 h-14 bg-blue-500 mx-auto flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-blue-400">
                     <AlertTriangle className="w-7 h-7 text-white" />
                   </div>
-                  <h3 className="font-semibold text-white mb-2">Hidden Cost Detection</h3>
-                  <p className="text-sm text-white/80">
+                  <h3 className="font-semibold text-gray-900 mb-2">Hidden Cost Detection</h3>
+                  <p className="text-sm text-gray-800">
                     Identifies missing items and potential hidden costs across vendors
                   </p>
                 </div>
@@ -215,7 +206,7 @@ export default function Home() {
                 {/* Blue Card - AI Recommendations */}
                 <div className="bg-blue-500 p-6 text-center card-hover group transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]">
                   <div className="w-14 h-14 bg-yellow-500 mx-auto flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-yellow-400">
-                    <Lightbulb className="w-7 h-7 text-white" />
+                    <Lightbulb className="w-7 h-7 text-gray-900" />
                   </div>
                   <h3 className="font-semibold text-white mb-2">AI Recommendations</h3>
                   <p className="text-sm text-white/80">
